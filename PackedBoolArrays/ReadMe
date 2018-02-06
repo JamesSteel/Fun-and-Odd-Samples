@@ -1,0 +1,7 @@
+This library provides a bool array format for python
+Giving an array of integers wither 1 or 0 these will be packed into uint64 (long long int) in C, allowing for quick computation on them.
+The library also provides a python wrapper class so that the operations on C data can be written in C and then given a python wrapper, using the objects, and thus functions on the internal C data can be done in Python. 
+
+This provides dramatic memory and time savings. 
+
+It requires Cython and Python 2.7+
