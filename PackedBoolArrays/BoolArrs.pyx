@@ -1,6 +1,6 @@
 from cpython cimport array
 import array
-from BoolArrs cimport uint64BoolArr, padBool64
+from cBoolArrs cimport uint64BoolArr, padBool64
 from cpython.mem cimport PyMem_Malloc, PyMem_Free
 from libc.stdlib cimport malloc, calloc, free
 
@@ -168,6 +168,9 @@ cdef class BoolArrPy:
     cdef uint64BoolArr *data
 
     def __init__(self, intBits):
+        """Creates a Python wrapper for a bool arg.
+    To use a BoolArr in a function you create a function which takes two uint64BoolArrs and their length as agruments, or the length can be taken from the uint64BoolArrs, but they must be checked to make sure they conform to the operations requirements.
+    Wrap it in a python function which takes two BoolArrPy, and operates on the uint64BoolArrs by retrieving the BoolArrPy.data property. This should be done in Cython."""
         self.alloc_arr(len(intBits))
         self.create_arr_py(intBits)
 
